@@ -1,0 +1,24 @@
+{
+  "name": "@padloc/locale",
+  "version": "3.1.1",
+  "description": "Package containing translations and wordlists for Padloc as well as various other localization tools",
+  "main": "index.js",
+  "files": [
+    "src",
+    "res"
+  ],
+  "scripts": {
+    "extract": "ts-node src/extract.ts ../*/src/{**,.}/*.ts"
+  },
+  "author": "Martin Kleinschrodt <martin@maklesoft.com>",
+  "license": "GPLv3",
+  "devDependencies": {
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/padloc/padloc.git",
+    "directory": "packages/locale"
+  }
+}

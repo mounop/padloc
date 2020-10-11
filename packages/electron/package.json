@@ -1,0 +1,66 @@
+{
+  "name": "@padloc/electron",
+  "version": "3.1.2",
+  "description": "Electron Wrapper for Padloc app",
+  "main": "main.js",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/padloc/padloc.git"
+  },
+  "scripts": {
+    "build": "rm -rf app && webpack && electron-builder",
+    "start": "webpack && electron app/main.js"
+  },
+  "author": "MaKleSoft UG",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "@padloc/app": "^3.1.2",
+    "@padloc/core": "^3.1.2",
+    "electron-store": "^4.0.0",
+    "electron-updater": "^4.1.2"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.0.0",
+    "electron": "^9.0.0",
+    "electron-builder": "^22.7.0",
+    "electron-notarize": "^0.2.0",
+    "file-loader": "^4.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.0.4",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
+  },
+  "build": {
+    "appId": "app.padloc",
+    "directories": {
+      "app": "app",
+      "buildResources": "res"
+    },
+    "mac": {
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "entitlements.plist",
+      "entitlementsInherit": "entitlements.plist"
+    },
+    "win": {
+      "publisherName": "Open Source Developer, Martin Kleinschrodt",
+      "sign": "scripts/sign-win.js"
+    },
+    "linux": {
+      "category": "Utility",
+      "target": [
+        "AppImage"
+      ]
+    },
+    "protocols": {
+      "name": "Padloc",
+      "schemes": [
+        "padloc"
+      ]
+    },
+    "afterSign": "scripts/notarize.js"
+  }
+}
